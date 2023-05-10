@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<link href="styles3.css" rel="stylesheet">
+  <head>
+    <style>
+     body{
+          background-image: url("images/background2.png");
+         background-repeat: no-repeat;
+         background-size: 150%;
+     }
+      #image {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        background-image: url('images/tob1.gif');
+        background-size: contain;
+        cursor: none;
+        transform-origin: center bottom;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="image"></div>
+
+    <script>
+      var image = document.getElementById("image");
+
+      var lastX, lastY;
+
+      document.addEventListener("mousemove", function(event) {
+        var x = event.clientX - image.offsetWidth / 2;
+        var y = event.clientY - image.offsetHeight;
+
+        var deltaX = x - lastX;
+        var deltaY = y - lastY;
+
+        var angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+
+        angle -= 90;
+
+        image.style.transform = "rotate(" + angle + "deg)";
+        image.style.left = x + "px";
+        image.style.top = y + "px";
+
+        lastX = x;
+        lastY = y;
+      });
+    </script>
+    <a href = "end.html"> <img src = "images/arrow.png" width = 100> </a>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -5,7 +5,9 @@ let ypos;
 
 let mode = 1;
 
-let bear = document.getElementById('mice');
+let bear = document.getElementById('bear');
+
+let cat, catright, catsit;
 
 
 function setup() {
@@ -24,51 +26,37 @@ function setup() {
 
     
 
-      if ((xpos>800 && xpos<1100) && (ypos>600 && ypos<900)){
-        //make bear appear
-        bear.style.display='block';
-      }
+    //   if ((xpos>800 && xpos<1100) && (ypos>600 && ypos<900)){
+    //     //make bear appear
+    //     bear.style.display='block';
+    //     bear.size (25,45);
+    //     bear.position (900,750);
+    //   }
 
-      if ((xpos<400) && (ypos<400)){
+    //   if ((xpos<400) && (ypos<400)){
 
-        //hide bear again
-        mouse.style.display='block';
-
-        //change scene to the next to the next one by adding 1
-        mode = 2;
-
-        console.log(mode)
-      }
-
-      // //changing of scenes
-      if (mode == 2){
-        removeElements();
-        background(0);
-        bear.style.display='none';
-      }
-    }
+    // }
     // console.log("cat is at: " + xpos + ", " + ypos);
   function windowResized() {
     // resize the canvas when the screen is resized.
     resizeCanvas(windowWidth, windowHeight);
-}
+}}
 
 
 function displayCat(){
-    removeElements();
+  removeElements();
     //lets manipulate the DOM and make our cat move with the arrow keys
     //create an image element in html
-    let cat = createImg("images/tob1.gif");
-    let catright = createImg("images/tob3.gif");
-    let catleft = createImg("images/tob4.gif");
-    let catsit = createImg ("images/tob2.png");
     //select size of image
-    catsit.size (400,400);
-    cat.size(400,400);
-    catright.size(500,400);
-    catleft.size(500,400);
+
+    //let catleft = createImg("images/tob4.gif");
+    // catsit = createImg ("images/tob2.png");
+    // catsit.size (400,400);
+    // cat.size(400,400);
+    // catright.size(500,400);
+    // catleft.size(500,400);
      // give it an id
-    cat.id('cat');
+    // cat.id('cat');
 
     //set the position
     //create arithmetic for x and y position. this lets us read out the position
@@ -80,38 +68,54 @@ function displayCat(){
     //catsit.position(xpos, ypos);
     //catsit.position(xpos, ypos);
 
+    
+
 //controls using arrow keys
     if (keyIsPressed){
-      catsit.style.display='none';
+
       if(keyCode == UP_ARROW){
+        cat = createImg("images/tobb.gif");
+        cat.size(250,450);
         cat.position(xpos, ypos);
-        catsit.style.display='none';
         //catsit.position(xpos, ypos);
 
         //minus 5 in the y direction means up
         y-=5;
+        console.log('up')
       } 
       
       if(keyCode == RIGHT_ARROW) {
+        catright = createImg("images/tob3.gif");
+        catright.size(500,400);
         catright.position(xpos, ypos);
-        catsit.style.display='none';
         //plus 5 in the x direction means right
+        console.log('right')
         x+=5;
       }
 
       if(keyCode == DOWN_ARROW) {
+        cat = createImg("images/tob1.gif");
+        cat.size(400,400);
         cat.position(xpos, ypos);
-        catsit.position(xpos, ypos);
+        console.log('down')
         //plus 5 in the y direction means down
         y+=5;
       }
+      
 
       if(keyCode == LEFT_ARROW) {
-        catleft.position(xpos, ypos);
+        cat = createImg("images/tob4.gif");
+        cat.position(xpos, ypos);
+        cat.size(500,400);
+        // catleft.position(xpos, ypos);
         //minus 5 in the x direction means left
         x-=5;
       }
-      //catsit.position(xpos, ypos);
+  }else{
+    cat = createImg("images/tob2.png");
+        cat.size(300,350);
+        cat.position(xpos, ypos);
   }
   
 }
+
